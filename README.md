@@ -293,19 +293,6 @@ Next.js + TypeScript + Tailwind CSS
 
 다음 단계는 상세 구현 계획을 작성한 뒤 Phase 1 스캐폴딩을 시작하는 것이다.
 
-## 15. 발표 구성 예시
-
-10분 내외 발표라면 다음 순서로 사용할 수 있다.
-
-1. **문제** — 정보는 많지만 나에게 필요한 아침 해석은 없다.
-2. **해결책** — 한국 투자자를 위한 개인용 Codex 모닝 데스크.
-3. **사용 경험** — Observe, Understand, Act.
-4. **Signal Desk** — AI 대시보드 느낌을 걷어낸 실무용 정보 표면.
-5. **작동 방식** — 무료 데이터 → Codex → 대시보드·Discord.
-6. **신뢰 설계** — 출처, 기준 시각, degraded 상태, 실패 시 이전 결과 보존.
-7. **비용과 범위** — 추가 비용 없이 로컬에서 먼저 검증.
-8. **로드맵** — 데이터 파이프라인부터 자동화까지 단계적으로 구현.
-
 ---
 
 상세 설계는 [`docs/superpowers/specs/2026-08-02-mybloomberg-prototype-design.md`](docs/superpowers/specs/2026-08-02-mybloomberg-prototype-design.md)에서 확인할 수 있다.
