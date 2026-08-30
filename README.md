@@ -2,7 +2,7 @@
 
 > 매일 아침, 한국 투자자의 관점에서 글로벌 시장을 읽고 Codex가 설명해 주는 개인용 모닝 데스크.
 
-[![Status](https://img.shields.io/badge/status-design%20approved-F59B00?style=flat-square)](#현재-상태)
+[![Status](https://img.shields.io/badge/status-phase%201%20complete-F59B00?style=flat-square)](#현재-상태)
 [![Cost](https://img.shields.io/badge/prototype-cost%20₩0-111111?style=flat-square)](#비용-원칙)
 [![Mode](https://img.shields.io/badge/runtime-local-34383A?style=flat-square)](#기술-구조)
 
@@ -169,22 +169,42 @@ Codex 리포트는 단순 뉴스 요약이 아니라 다음 질문에 답한다.
 
 ```text
 Next.js + TypeScript + Tailwind CSS
-├─ app/                  화면과 로컬 실행 API
-├─ components/           Signal Desk 컴포넌트
-├─ lib/market-data/      시장 데이터 어댑터와 정규화
-├─ lib/news/             RSS·GDELT·중복 제거
-├─ lib/report/           Codex 실행·스키마 검증·Markdown 변환
-├─ lib/storage/          파일 기반 스냅샷과 리포트
-├─ lib/notifications/    Discord 전송
-└─ scripts/              파이프라인과 Windows 예약 작업
+├─ src/app/              App Router 화면과 전역 스타일
+├─ src/components/desk/  Signal Desk UI 컴포넌트
+├─ src/lib/domain/       시장·리포트 도메인 타입
+├─ src/lib/sample-data/  네트워크 없이 실행하는 샘플 데이터
+└─ src/test/             Vitest 공통 테스트 설정
 ```
 
 - 패키지 관리자: `pnpm`
 - 런타임: Node.js 20 이상
+- 프레임워크: Next.js 16·React 19
+- 품질 도구: ESLint·Prettier·Vitest·Testing Library
 - 저장 방식: Git에서 제외한 로컬 JSON·Markdown 파일
 - AI 실행: 로컬 Codex CLI 비대화형 모드
 - 자동화: Windows 작업 스케줄러
 - 데이터베이스와 별도 서버는 사용하지 않음
+
+현재 저장소에는 Signal Desk 화면과 샘플 데이터까지 구현되어 있다. 시장 데이터, 뉴스, Codex, 파일 저장, Discord 모듈은 후속 Phase에서 같은 `src/lib` 경계 안에 추가한다.
+
+## 로컬 실행
+
+```bash
+pnpm install
+pnpm dev
+```
+
+브라우저에서 `http://localhost:3000`을 열면 샘플 데이터로 구성된 Signal Desk를 확인할 수 있다. 현재 화면의 `SAMPLE`과 `STALE` 표시는 실제 데이터 연결 전이라는 사실을 명확히 보여준다.
+
+### 품질 검사
+
+```bash
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm format:check
+pnpm build
+```
 
 ## 9. 실패해도 거짓말하지 않는 시스템
 
@@ -253,11 +273,12 @@ Next.js + TypeScript + Tailwind CSS
 - Signal Desk 시각 방향 승인
 - 데이터·뉴스·리포트·오류 처리 설계 승인
 
-### Phase 1 — 기반 만들기
+### Phase 1 — 기반 만들기 `완료`
 
 - Next.js·TypeScript·Tailwind CSS 스캐폴딩
 - 품질 도구와 테스트 환경 구성
 - 디자인 토큰과 샘플 데이터 모델 작성
+- Signal Desk 반응형 화면과 핵심 컴포넌트 테스트
 
 ### Phase 2 — 데이터 파이프라인
 
@@ -289,9 +310,12 @@ Next.js + TypeScript + Tailwind CSS
 - 제품 기획과 아키텍처 승인 완료
 - Signal Desk 디자인 방향 승인 완료
 - 상세 설계 문서 작성 완료
-- 실제 애플리케이션 스캐폴딩은 아직 시작하지 않음
+- Next.js·TypeScript·Tailwind CSS 스캐폴딩 완료
+- 데스크톱·모바일 Signal Desk 샘플 화면 구현 완료
+- ESLint·타입체크·테스트·포맷·프로덕션 빌드 통과
+- 독립 디자인 검수 통과
 
-다음 단계는 상세 구현 계획을 작성한 뒤 Phase 1 스캐폴딩을 시작하는 것이다.
+다음 단계는 Phase 2의 실제 시장 데이터와 뉴스 수집 파이프라인을 구현하는 것이다.
 
 ---
 

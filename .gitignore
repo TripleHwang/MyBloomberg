@@ -2,3 +2,17 @@
 .env*
 !.env.example
 data/
+
+# dependencies and build output
+node_modules/
+.pnpm-store/
+.next/
+out/
+coverage/
+
+# local diagnostics
+*.log
+pnpm-debug.log*
+npm-debug.log*
+.DS_Store
+*.tsbuildinfo

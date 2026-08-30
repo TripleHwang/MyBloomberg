@@ -1,0 +1,217 @@
+import type {
+  CalendarEvent,
+  CrossAssetPoint,
+  DeskStatus,
+  MarketPoint,
+  MarketPulseSummary,
+  MorningThesisSummary,
+  SignalRow,
+  WatchlistItem,
+} from "@/lib/domain";
+
+export const sampleMarketPoints: MarketPoint[] = [
+  {
+    id: "kospi",
+    symbol: "KOSPI",
+    label: "Korea Composite",
+    assetClass: "index",
+    value: 2764.31,
+    displayValue: "2,764.31",
+    change: 18.46,
+    changePercent: 0.67,
+    displayChange: "+0.67%",
+    direction: "up",
+    currency: "KRW",
+    asOf: "2026-08-28T15:30:00+09:00",
+    source: "SAMPLE",
+    status: "fresh",
+  },
+  {
+    id: "nasdaq",
+    symbol: "NASDAQ",
+    label: "Nasdaq Composite",
+    assetClass: "index",
+    value: 17863.23,
+    displayValue: "17,863.23",
+    change: -109.92,
+    changePercent: -0.61,
+    displayChange: "−0.61%",
+    direction: "down",
+    currency: "USD",
+    asOf: "2026-08-28T16:00:00-04:00",
+    source: "SAMPLE",
+    status: "fresh",
+  },
+  {
+    id: "usdkrw",
+    symbol: "USD/KRW",
+    label: "Dollar / Won",
+    assetClass: "fx",
+    value: 1382.4,
+    displayValue: "1,382.40",
+    change: 5.2,
+    changePercent: 0.38,
+    displayChange: "+0.38%",
+    direction: "up",
+    currency: "KRW",
+    asOf: "2026-08-30T07:12:00+09:00",
+    source: "SAMPLE",
+    status: "stale",
+  },
+  {
+    id: "us10y",
+    symbol: "US 10Y",
+    label: "Treasury Yield",
+    assetClass: "rate",
+    value: 4.21,
+    displayValue: "4.210%",
+    change: 0.04,
+    changePercent: null,
+    displayChange: "+4 bp",
+    direction: "up",
+    currency: null,
+    asOf: "2026-08-28T16:00:00-04:00",
+    source: "SAMPLE",
+    status: "fresh",
+  },
+  {
+    id: "wti",
+    symbol: "WTI",
+    label: "Crude Oil",
+    assetClass: "commodity",
+    value: 76.18,
+    displayValue: "$76.18",
+    change: -0.54,
+    changePercent: -0.7,
+    displayChange: "−0.70%",
+    direction: "down",
+    currency: "USD",
+    asOf: "2026-08-28T16:00:00-04:00",
+    source: "SAMPLE",
+    status: "fresh",
+  },
+  {
+    id: "btc",
+    symbol: "BTC/USD",
+    label: "Bitcoin",
+    assetClass: "crypto",
+    value: 68420,
+    displayValue: "$68,420",
+    change: 910,
+    changePercent: 1.35,
+    displayChange: "+1.35%",
+    direction: "up",
+    currency: "USD",
+    asOf: "2026-08-30T07:15:00+09:00",
+    source: "SAMPLE",
+    status: "fresh",
+  },
+];
+
+export const sampleThesis: MorningThesisSummary = {
+  eyebrow: "CODEX MORNING THESIS · SAMPLE",
+  headline: "기술주 숨 고르기, 서울 시장은 환율을 본다",
+  summary:
+    "미국 장기금리 상승과 성장주 약세가 동시에 나타났지만 반도체의 상대 강도는 유지됐다. 오늘 한국장은 원화 약세가 외국인 수급을 얼마나 제약하는지가 첫 번째 확인 조건이다.",
+  conviction: 64,
+  asOfLabel: "07:30 KST · SAMPLE SNAPSHOT",
+};
+
+export const samplePulse: MarketPulseSummary = {
+  regime: "CAUTIOUS / SELECTIVE RISK",
+  riskScore: 64,
+  factors: [
+    { label: "Growth", value: "−0.8", direction: "down", note: "금리 부담" },
+    { label: "Semis", value: "+1.3", direction: "up", note: "상대 강도" },
+    { label: "KRW Risk", value: "+0.6", direction: "up", note: "압력 확대" },
+    { label: "Liquidity", value: "0.0", direction: "flat", note: "중립" },
+  ],
+};
+
+export const sampleCrossAsset: CrossAssetPoint[] = [
+  { label: "D−6", equity: 72, rates: 42, dollar: 37 },
+  { label: "D−5", equity: 66, rates: 49, dollar: 44 },
+  { label: "D−4", equity: 70, rates: 54, dollar: 41 },
+  { label: "D−3", equity: 62, rates: 58, dollar: 47 },
+  { label: "D−2", equity: 59, rates: 63, dollar: 56 },
+  { label: "D−1", equity: 54, rates: 69, dollar: 62 },
+  { label: "NOW", equity: 51, rates: 74, dollar: 68 },
+];
+
+export const sampleSignals: SignalRow[] = [
+  {
+    factor: "Yield curve",
+    signal: "BEAR STEEPENING",
+    reading: "2s10s +24 bp",
+    interpretation: "장기금리발 밸류에이션 압력",
+    tone: "negative",
+  },
+  {
+    factor: "Dollar",
+    signal: "FIRM",
+    reading: "DXY +0.4%",
+    interpretation: "원화와 외국인 수급 확인",
+    tone: "watch",
+  },
+  {
+    factor: "Semis / Nasdaq",
+    signal: "RELATIVE BID",
+    reading: "+1.3 σ",
+    interpretation: "지수 약세 속 선택적 강세",
+    tone: "positive",
+  },
+  {
+    factor: "Volatility",
+    signal: "CONTAINED",
+    reading: "VIX 16.8",
+    interpretation: "패닉보다 재가격 구간",
+    tone: "neutral",
+  },
+];
+
+export const sampleWatchlist: WatchlistItem[] = [
+  {
+    symbol: "005930",
+    name: "삼성전자",
+    move: "+0.9%",
+    direction: "up",
+    condition: "원화 약세에도 외국인 순매수 유지 여부",
+    status: "fresh",
+  },
+  {
+    symbol: "000660",
+    name: "SK하이닉스",
+    move: "+1.7%",
+    direction: "up",
+    condition: "반도체 상대 강도와 20일선 지지",
+    status: "fresh",
+  },
+  {
+    symbol: "NVDA",
+    name: "NVIDIA",
+    move: "−0.4%",
+    direction: "down",
+    condition: "미 10년물 4.25% 돌파 여부",
+    status: "stale",
+  },
+];
+
+export const sampleCalendar: CalendarEvent[] = [
+  {
+    time: "08:00",
+    region: "KR",
+    event: "산업생산 잠정치",
+    relevance: "medium",
+  },
+  { time: "10:30", region: "CN", event: "제조업 PMI", relevance: "high" },
+  { time: "23:00", region: "US", event: "ISM 제조업지수", relevance: "high" },
+];
+
+export const sampleDeskStatus: DeskStatus = {
+  mode: "sample",
+  agent: "offline",
+  quoteStatus: "stale",
+  dataAsOf: "2026-08-30 07:15 KST",
+  reportId: "SAMPLE-001",
+  scaffoldPhase: "PHASE 1 / UI SCAFFOLD",
+};
