@@ -20,4 +20,12 @@ export interface MarketPoint {
   asOf: string | null;
   source: string;
   status: DataStatus;
+  marketState?: "open" | "closed" | "pre" | "post" | "unknown";
+  freshnessReason?: string;
+  history?: Array<{ time: string; value: number }>;
+  region?: "KR" | "US" | "GLOBAL";
+  instrumentType?: "stock" | "etf";
+  sector?: string;
+  isWatchlist?: boolean;
+  fundamentals?: import("./briefing").FundamentalMetrics;
 }
